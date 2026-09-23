@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="page-width site-footer__top">
+    <div class="footer-brand"><a class="site-logo site-logo--footer" href="{{ routes.root_url }}">{% if section.settings.logo != blank %}{{ section.settings.logo | image_url: width: 230 | image_tag: widths: '150, 230', class: 'site-logo__image', alt: shop.name }}{% else %}{{ 'logo-relvas.jpg' | asset_url | image_tag: widths: '150, 230', class: 'site-logo__image', alt: shop.name }}{% endif %}</a><p>{{ section.settings.description }}</p></div>
+    <div class="footer-links"><h2>{{ section.settings.menu_heading }}</h2>{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}</div>
+    <div class="footer-newsletter"><h2>{{ section.settings.newsletter_heading }}</h2><p>{{ section.settings.newsletter_text }}</p>{% form 'customer', class: 'newsletter-form' %}<input type="hidden" name="contact[tags]" value="newsletter"><label class="visually-hidden" for="NewsletterEmail">Seu e-mail</label><input id="NewsletterEmail" type="email" name="contact[email]" placeholder="Seu melhor e-mail" required><button type="submit" aria-label="Cadastrar e-mail">→</button>{% endform %}</div>
+  </div>
+  <div class="page-width site-footer__bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. Todos os caminhos são bem-vindos.</span><span>Pagamento seguro pelo Shopify</span></div>
+</footer>
+
+{% schema %}
+{
+  "name": "Rodapé",
+  "settings": [
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "textarea", "id": "description", "label": "Descrição", "default": "Produtos naturais e artefatos para momentos de conexão, cuidado e presença." },
+    { "type": "text", "id": "menu_heading", "label": "Título do menu", "default": "Navegue" },
+    { "type": "link_list", "id": "menu", "label": "Menu do rodapé", "default": "footer" },
+    { "type": "text", "id": "newsletter_heading", "label": "Título da newsletter", "default": "Receba boas energias" },
+    { "type": "textarea", "id": "newsletter_text", "label": "Texto da newsletter", "default": "Novidades, conteúdos e lançamentos diretamente no seu e-mail." }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-relvas",
+      "settings": {}
+    },
+    "categories": {
+      "type": "category-links",
+      "blocks": {
+        "natural": { "type": "category", "settings": { "symbol": "✦", "title": "Produtos naturais", "text": "Aromas, ervas e cuidados para o seu espaço." } },
+        "aromas": { "type": "category", "settings": { "symbol": "☾", "title": "Incensos e aromas", "text": "Perfumes para criar atmosferas de presença." } },
+        "velas": { "type": "category", "settings": { "symbol": "◌", "title": "Velas e rituais", "text": "Luz, intenção e beleza em cada momento." } },
+        "artefatos": { "type": "category", "settings": { "symbol": "✧", "title": "Guias e artefatos", "text": "Peças para acompanhar sua jornada." } }
+      },
+      "block_order": ["natural", "aromas", "velas", "artefatos"],
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {}
+    },
+    "ritual": {
+      "type": "ritual-banner",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "categories", "featured", "ritual"]
+}

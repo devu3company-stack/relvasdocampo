@@ -1,0 +1,49 @@
+<section class="section section--product">
+  {% assign product_alt = product.featured_image.alt | default: product.title %}
+  <div class="page-width product-layout">
+    <div class="product-gallery">
+      <div class="product-gallery__main">
+        {% if product.featured_image != blank %}
+          {{ product.featured_image | image_url: width: 1200 | image_tag: widths: '600, 900, 1200', loading: 'eager', alt: product_alt }}
+        {% else %}<div class="product-gallery__placeholder">✦</div>{% endif %}
+      </div>
+      {% if product.images.size > 1 %}
+        <div class="product-gallery__thumbs">
+          {% for image in product.images %}{% assign image_alt = image.alt | default: product.title %}{{ image | image_url: width: 180 | image_tag: widths: '90, 180', loading: 'lazy', alt: image_alt }}{% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="product-details">
+      {% if product.vendor != blank %}<p class="eyebrow">{{ product.vendor }}</p>{% endif %}
+      <h1>{{ product.title }}</h1>
+      <div class="product-details__price">{{ product.selected_or_first_available_variant.price | money }}</div>
+      {% if product.description != blank %}<div class="product-details__description">{{ product.description }}</div>{% endif %}
+
+      {% assign product_form_id = 'product-form-' | append: section.id %}
+      {% form 'product', product, id: product_form_id, class: 'product-form' %}
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="form-field">
+              <label for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+              <select id="Option-{{ section.id }}-{{ forloop.index0 }}" name="options[{{ option.name | escape }}]">
+                {% for value in option.values %}<option value="{{ value | escape }}"{% if option.selected_value == value %} selected{% endif %}>{{ value }}</option>{% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% endunless %}
+        <div class="product-form__row">
+          <div class="form-field form-field--quantity"><label for="Quantity-{{ section.id }}">Quantidade</label><input id="Quantity-{{ section.id }}" type="number" name="quantity" min="1" value="1"></div>
+          <button class="button button--primary product-form__submit" type="submit" name="add"{% unless product.selected_or_first_available_variant.available %} disabled{% endunless %}>{% if product.selected_or_first_available_variant.available %}Adicionar ao carrinho{% else %}Indisponível{% endif %}</button>
+        </div>
+        {{ form | payment_button }}
+      {% endform %}
+
+      <div class="product-notes"><div>✦ Compra segura pelo checkout Shopify</div><div>✦ Consulte as informações de cada produto</div><div>✦ Atendimento para ajudar na sua escolha</div></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Produto" }
+{% endschema %}

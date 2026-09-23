@@ -1,0 +1,35 @@
+<section class="section section--cart">
+  <div class="page-width">
+    <div class="section-heading"><p class="eyebrow">Sua seleção</p><h1>Carrinho</h1></div>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form">
+        <div class="cart-layout">
+          <div class="cart-items">
+            {% for item in cart.items %}
+              <div class="cart-item">
+                <a class="cart-item__image" href="{{ item.url }}">{% if item.image %}{{ item.image | image_url: width: 220 | image_tag: widths: '110, 220', alt: item.title }}{% endif %}</a>
+                <div class="cart-item__content"><a href="{{ item.url }}"><h2>{{ item.product.title }}</h2></a>{% unless item.product.has_only_default_variant %}<p>{{ item.variant.title }}</p>{% endunless %}<a class="remove-link" href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0">Remover</a></div>
+                <div class="cart-item__quantity"><label for="Updates-{{ forloop.index }}">Quantidade</label><input id="Updates-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0"></div>
+                <strong class="cart-item__price">{{ item.final_line_price | money }}</strong>
+              </div>
+            {% endfor %}
+          </div>
+          <aside class="cart-summary">
+            <div class="cart-summary__intro"><h2>Quase lá.</h2><p>Revise sua seleção e finalize seu pedido com segurança.</p></div>
+            <div class="cart-summary__total"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+            <p>Frete, descontos e formas de pagamento serão calculados no checkout.</p>
+            <button class="button button--secondary" type="submit" name="update">Atualizar carrinho</button>
+            <button class="button button--primary" type="submit" name="checkout">Finalizar compra</button>
+            <div class="cart-trust"><span>✓ Compra segura</span><span>✓ Checkout protegido pela Shopify</span><span>✓ Atendimento pelo WhatsApp</span></div>
+          </aside>
+        </div>
+      </form>
+    {% else %}
+      <div class="empty-state empty-state--large"><h2>Seu carrinho está vazio</h2><p>Escolha algo especial para acompanhar o seu caminho.</p><a class="button button--primary" href="{{ routes.all_products_collection_url }}">Explorar produtos</a></div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Carrinho" }
+{% endschema %}

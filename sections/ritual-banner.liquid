@@ -1,0 +1,30 @@
+<section class="ritual-banner">
+  <div class="page-width ritual-banner__inner">
+    <div class="ritual-banner__copy">
+      {% if section.settings.eyebrow != blank %}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2>{{ section.settings.heading }}</h2>
+      <div>{{ section.settings.text }}</div>
+      {% if section.settings.button_label != blank %}<a class="button button--light" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>{% endif %}
+    </div>
+    {% if section.settings.image != blank %}
+      <div class="ritual-banner__media">{{ section.settings.image | image_url: width: 1000 | image_tag: widths: '500, 800, 1000', loading: 'lazy', alt: section.settings.heading }}</div>
+    {% else %}
+      <div class="ritual-banner__orb" aria-hidden="true">✺</div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Banner de essência",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagem" },
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeno", "default": "Para todos os caminhos" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Cada jornada é única" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>A Relvas do Campo reúne produtos para diferentes crenças, práticas e formas de cuidar de si. Escolha com liberdade e respeito.</p>" },
+    { "type": "text", "id": "button_label", "label": "Texto do botão", "default": "Ver novidades" },
+    { "type": "url", "id": "button_link", "label": "Link do botão" }
+  ],
+  "presets": [{ "name": "Banner de essência" }]
+}
+{% endschema %}

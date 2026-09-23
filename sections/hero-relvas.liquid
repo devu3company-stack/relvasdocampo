@@ -1,0 +1,41 @@
+<section class="hero-section">
+  {% assign hero_alt = section.settings.image.alt | default: section.settings.heading %}
+  <div class="hero-section__media">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2200 | image_tag: widths: '750, 1100, 1500, 2200', sizes: '100vw', loading: 'eager', class: 'hero-section__image', alt: hero_alt }}
+    {% else %}
+      <div class="hero-section__placeholder" aria-hidden="true"></div>
+    {% endif %}
+  </div>
+  <div class="hero-section__veil"></div>
+  <div class="page-width hero-section__content">
+    {% if section.settings.eyebrow != blank %}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+    <h1>{{ section.settings.heading }}</h1>
+    {% if section.settings.text != blank %}<div class="hero-section__text">{{ section.settings.text }}</div>{% endif %}
+    <div class="hero-section__actions">
+      {% if section.settings.button_label != blank %}
+        <a class="button button--primary" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+      {% endif %}
+      {% if section.settings.secondary_label != blank %}
+        <a class="button button--ghost" href="{{ section.settings.secondary_link | default: routes.search_url }}">{{ section.settings.secondary_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Relvas do Campo",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagem principal" },
+    { "type": "text", "id": "eyebrow", "label": "Texto pequeno", "default": "Rituais de presença e bem-estar" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Encontre o seu caminho de conexão" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Produtos naturais e artefatos escolhidos para acompanhar seus momentos de cuidado, intenção e equilíbrio.</p>" },
+    { "type": "text", "id": "button_label", "label": "Texto do botão principal", "default": "Explorar produtos" },
+    { "type": "url", "id": "button_link", "label": "Link do botão principal" },
+    { "type": "text", "id": "secondary_label", "label": "Texto do segundo botão", "default": "Conheça a nossa essência" },
+    { "type": "url", "id": "secondary_link", "label": "Link do segundo botão" }
+  ],
+  "presets": [{ "name": "Hero Relvas do Campo" }]
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+[
+  {
+    "name": "Identidade da loja",
+    "settings": [
+      { "type": "color", "id": "primary_color", "label": "Verde principal", "default": "#118a50" },
+      { "type": "color", "id": "accent_color", "label": "Verde de destaque", "default": "#75c942" },
+      { "type": "color", "id": "background_color", "label": "Fundo branco", "default": "#ffffff" },
+      { "type": "color", "id": "text_color", "label": "Texto", "default": "#1f3b2b" }
+    ]
+  },
+  {
+    "name": "WhatsApp",
+    "settings": [
+      { "type": "text", "id": "whatsapp_number", "label": "Número do WhatsApp", "info": "Informe com código do país e DDD. Exemplo: 5511999999999." },
+      { "type": "text", "id": "whatsapp_label", "label": "Texto do botão", "default": "Fale conosco" },
+      { "type": "text", "id": "whatsapp_message", "label": "Mensagem inicial", "default": "Olá! Vim pelo site da Relvas do Campo." }
+    ]
+  }
+]

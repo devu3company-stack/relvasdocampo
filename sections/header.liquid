@@ -1,0 +1,70 @@
+<header class="site-header" data-header>
+  {% if section.settings.announcement_text != blank %}
+    <div class="announcement-bar">
+      <div class="page-width announcement-bar__inner">
+        <span>{{ section.settings.announcement_text }}</span>
+        {% if section.settings.announcement_link != blank %}
+          <a href="{{ section.settings.announcement_link }}">Conheça a loja</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="header-main">
+    <div class="page-width header-main__inner">
+      <button class="icon-button menu-toggle" type="button" aria-expanded="false" aria-controls="MobileMenu" data-menu-toggle>
+        <span class="visually-hidden">Abrir menu</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+      </button>
+
+      <a class="site-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {% if section.settings.logo != blank %}
+          {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag: widths: '120, 180, 240', class: 'site-logo__image', alt: shop.name }}
+        {% else %}
+          {{ 'logo-relvas.jpg' | asset_url | image_tag: widths: '140, 190, 240', class: 'site-logo__image', alt: shop.name }}
+        {% endif %}
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navegação principal">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-button" href="{{ routes.search_url }}" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m16 16 5 5" /></svg>
+        </a>
+        <a class="icon-button header-account" href="{{ routes.account_url }}" aria-label="Minha conta">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5" /><path d="M5 20c.7-3.2 3.1-5 7-5s6.3 1.8 7 5" /></svg>
+        </a>
+        <a class="icon-button cart-link" href="{{ routes.cart_url }}" aria-label="Carrinho">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 1.9-1.4L20 8H6" /><circle cx="9" cy="20" r="1" /><circle cx="17" cy="20" r="1" /></svg>
+          <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="MobileMenu" data-mobile-menu hidden>
+    <div class="page-width mobile-menu__inner">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+      <a href="{{ routes.account_url }}">Minha conta</a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Cabeçalho",
+  "settings": [
+    { "type": "text", "id": "announcement_text", "label": "Mensagem superior", "default": "Um espaço de conexão, cuidado e presença" },
+    { "type": "url", "id": "announcement_link", "label": "Link da mensagem" },
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_width", "min": 100, "max": 280, "step": 10, "unit": "px", "label": "Largura da logo", "default": 190 },
+    { "type": "link_list", "id": "menu", "label": "Menu principal", "default": "main-menu" }
+  ]
+}
+{% endschema %}
