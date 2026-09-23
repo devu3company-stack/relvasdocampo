@@ -1,28 +1,103 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-relvas",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Rituais de presença e bem-estar",
+        "heading": "Encontre o seu caminho de conexão",
+        "text": "<p>Produtos naturais e artefatos escolhidos para acompanhar seus momentos de cuidado, intenção e equilíbrio.</p>",
+        "button_label": "Explorar produtos",
+        "button_link": "",
+        "secondary_label": "Conheça a nossa essência",
+        "secondary_link": ""
+      }
     },
     "categories": {
       "type": "category-links",
       "blocks": {
-        "natural": { "type": "category", "settings": { "symbol": "✦", "title": "Produtos naturais", "text": "Aromas, ervas e cuidados para o seu espaço." } },
-        "aromas": { "type": "category", "settings": { "symbol": "☾", "title": "Incensos e aromas", "text": "Perfumes para criar atmosferas de presença." } },
-        "velas": { "type": "category", "settings": { "symbol": "◌", "title": "Velas e rituais", "text": "Luz, intenção e beleza em cada momento." } },
-        "artefatos": { "type": "category", "settings": { "symbol": "✧", "title": "Guias e artefatos", "text": "Peças para acompanhar sua jornada." } }
+        "natural": {
+          "type": "category",
+          "settings": {
+            "symbol": "✦",
+            "title": "Produtos naturais",
+            "text": "Aromas, ervas e cuidados para o seu espaço.",
+            "link": ""
+          }
+        },
+        "aromas": {
+          "type": "category",
+          "settings": {
+            "symbol": "☾",
+            "title": "Incensos e aromas",
+            "text": "Perfumes para criar atmosferas de presença.",
+            "link": ""
+          }
+        },
+        "velas": {
+          "type": "category",
+          "settings": {
+            "symbol": "◌",
+            "title": "Velas e rituais",
+            "text": "Luz, intenção e beleza em cada momento.",
+            "link": ""
+          }
+        },
+        "artefatos": {
+          "type": "category",
+          "settings": {
+            "symbol": "✧",
+            "title": "Guias e artefatos",
+            "text": "Peças para acompanhar sua jornada.",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["natural", "aromas", "velas", "artefatos"],
-      "settings": {}
+      "block_order": [
+        "natural",
+        "aromas",
+        "velas",
+        "artefatos"
+      ],
+      "settings": {
+        "eyebrow": "Escolha por intenção",
+        "heading": "Um universo para descobrir",
+        "text": "Encontre elementos para trazer mais significado aos seus rituais e ao seu dia a dia."
+      }
     },
     "featured": {
       "type": "featured-collection",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Escolhas da casa",
+        "heading": "Mais procurados",
+        "text": "Peças e produtos que já fazem parte dos rituais de muitas pessoas.",
+        "collection": "vela",
+        "products_to_show": 6
+      }
     },
     "ritual": {
       "type": "ritual-banner",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Para todos os caminhos",
+        "heading": "Cada jornada é única",
+        "text": "<p>A Relvas do Campo reúne produtos para diferentes crenças, práticas e formas de cuidar de si. Escolha com liberdade e respeito.</p>",
+        "button_label": "Ver novidades",
+        "button_link": ""
+      }
     }
   },
-  "order": ["hero", "categories", "featured", "ritual"]
+  "order": [
+    "hero",
+    "categories",
+    "featured",
+    "ritual"
+  ]
 }
