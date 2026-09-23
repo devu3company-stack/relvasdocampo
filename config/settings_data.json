@@ -1,0 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "whatsapp_number": "5519992689231",
+    "whatsapp_label": "Precisa de Ajuda?",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "announcement_text": "Um espaço de conexão, cuidado e presença",
+          "announcement_link": "",
+          "logo": "shopify://shop_images/logo-relvas.png",
+          "logo_width": 190,
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "description": "Produtos naturais e artefatos para momentos de conexão, cuidado e presença.",
+          "menu_heading": "Navegue",
+          "menu": "footer",
+          "newsletter_heading": "Receba boas energias",
+          "newsletter_text": "Novidades, conteúdos e lançamentos diretamente no seu e-mail."
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}
